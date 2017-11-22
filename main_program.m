@@ -10,25 +10,25 @@ r_res =0;
 l_res = 0;
 n_res = 0;
 f = 200*10^3; %frequency [Hz]
-wire_thickness = 0.001;
+wire_radius = 0.001;
 conductivity = 5.96*10^7;
 delta=1/sqrt(pi*f*conductivity*mu0);
 
-%{  
+
 tic
 M = calculate_mutual_inductance(r,l,n,d)
-Le1 = external_selfinductance(r(1),l(1),n(1))
-Le1_self = internal_selfinductance(r(1),wire_thickness,delta);
+Le1 = external_selfinductance(r(1),l(1),n(1), wire_radius)
+Le1_self = internal_selfinductance(r(1),wire_radius,delta);
 L1 = Le1 + Le1_self;
 %L_wheeler = (10*pi*mu0*n(1)^2*r(1)^2)/(9*r(1)+10*l(1))
-Le2 = external_selfinductance(r(2),l(2),n(2))       
-Le2_self = internal_selfinductance(r(1),wire_thickness, delta);
+Le2 = external_selfinductance(r(2),l(2),n(2), wire_radius)       
+Le2_self = internal_selfinductance(r(1),wire_radius, delta);
 L2 = Le2 + Le2_self;
 %L = mu0*n(1)^2*r(1)^2*pi/l(1)
 k_self = M/sqrt((L2*L2))
 k = M/sqrt((Le1*Le2));
 toc
-%}
+
 
 %here is plot generation
 radii_for_plot = [];
@@ -122,6 +122,7 @@ scatter(turns_for_plot, values_for_turns_plot);
 xlabel('turns n') % x-axis label
 ylabel('coupling factor') % y-axis label
     %}     
+%{
 i = 0;  
 for r1 = 0.1:0.1:0.5
     i
