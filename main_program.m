@@ -1,8 +1,8 @@
 mu0 = 4*pi*10^(-7);
-r = [0.05, 0.05]; %radi of one loop 
-l = [0.1, 0.1]; %l�ngd p� solenoid
+r = [0.1, 0.1]; %radi of one loop 
+l = [0.2, 0.2]; %l�ngd p� solenoid
 d = 0.2; %distance in z
-n = [200, 200]; % num of laps
+n = [40, 40]; % num of laps
 z = 0;  
 zprim = 0.2;
 k = 0;
@@ -30,7 +30,7 @@ k_self = M/sqrt((L2*L2))
 k = M/sqrt((Le1*Le2));
 toc
 %}
-
+%{
 figure
 subplot(2,2,1)
 plot_turns_solenoid(r,l,n,d,wire_radius,delta);
@@ -61,7 +61,12 @@ subplot(2,2,4)
 f_turns = plot_turns_layer_coil(r,n,d,distance_between_turns, wire_radius, delta)
 title(['flat coil with r = ', num2str(r(1)), ' , d = ', num2str(d), ' m'])
 %figure();
+f_radii_turns = plot_radii_turns_layer_coil(r,n,d,distance_between_turns, wire_radius, delta)
+
+points = [0.3];
+fx_radii = differentiate(f_rad, points)
+fx_radii_turns = differentiate(f_radii_turns, points)
 
 %plot_turns_solenoid_and_layer_coil(r,n,d,distance_between_turns,wire_radius,delta,l);
-
-%Maximize_k_flat_coil(r(1),n,d,distance_between_turns, wire_radius,delta,0.002,0.004);
+%}
+Maximize_k_flat_coil(r(1),n,d,distance_between_turns, wire_radius,delta,0.002,0.004);

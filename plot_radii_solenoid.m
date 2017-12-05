@@ -22,7 +22,7 @@ end
 
 scatter(radii_for_plot, values_for_radii_plot);
 xlabel('radii [m]') % x-axis label
-ylabel('coupling factor') % y-axis label
+ylabel('coupling coefficient k') % y-axis label
 
 end
 

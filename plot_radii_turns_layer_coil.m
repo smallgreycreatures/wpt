@@ -1,4 +1,4 @@
-function [ regression_function ] = plot_turns_layer_coil( r, n, d, distance_between_turns, wire_radius, delta )
+function [ regression_function ] = plot_radii_turns_layer_coil( r, n, d, distance_between_turns, wire_radius, delta )
     turns_for_plot = [];
     radii_for_plot = [];
     values_for_turns_plot = [];
@@ -23,10 +23,11 @@ function [ regression_function ] = plot_turns_layer_coil( r, n, d, distance_betw
 
     %scatter(turns_for_plot, values_for_turns_plot);
 
-    f = fit(turns_for_plot.', values_for_turns_plot.', 'poly3');
-    plot(f, turns_for_plot, values_for_turns_plot);
-    xlabel('turns n') % x-axis label
-    ylabel('coupling coefficient k') % y-axis label
+    f = fit(radii_for_plot.', values_for_turns_plot.', 'poly3');
+    %plot(f, radii_for_plot, values_for_turns_plot);
+    %xlabel('radii n') % x-axis label
+    %ylabel('coupling factor') % y-axis label
     regression_function = f;
 end
+
 

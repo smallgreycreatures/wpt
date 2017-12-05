@@ -3,7 +3,7 @@ function [ output_args ] = Maximize_k_flat_coil( inner_radius, n, d, distance_be
     turns_k = [];
     radii = [];
     radii_k = [];
-    price = 2000;
+    price = 500;
     price_per_meter = 50;
     A = a*b;
     rho = 8.96*10^3;
@@ -11,15 +11,17 @@ function [ output_args ] = Maximize_k_flat_coil( inner_radius, n, d, distance_be
     max_k = 0;
     max_n = 0;
     max_r = 0;
+    max_L = 0;
+    max_M = 0;
     i = 1;
     d_for_turn = distance_between_turns+a;
-    for n1 = 1:1:200
+    for n1 = 1:1:50
         n = [n1,n1];
         i_i = 1;    
         n1
         
         
-        for r1 = 0.05:0.01:0.5
+        for r1 = 0.05:0.01:0.3
             r = [r1, r1];
             radii(i) = r1;
             
@@ -43,6 +45,8 @@ function [ output_args ] = Maximize_k_flat_coil( inner_radius, n, d, distance_be
                     max_k = k;
                     max_n = n1;
                     max_r = r1;
+                    max_L = L_r1;
+                    max_M = M_r;
                 
                 end
             
@@ -58,7 +62,8 @@ function [ output_args ] = Maximize_k_flat_coil( inner_radius, n, d, distance_be
     max_k
     max_n
     max_r
-
+    max_M
+    max_L
 
 
 

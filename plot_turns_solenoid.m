@@ -3,7 +3,7 @@ turns_for_plot = [];
 values_for_turn_plot = [];
 i = 1;
 
-for n1 = 1:1:100
+for n1 = 1:1:30
     n = [n1, n1];
     turns_for_plot(i) = n1;
     
@@ -23,7 +23,7 @@ end
 
 scatter(turns_for_plot, values_for_turns_plot);
 xlabel('turns n') % x-axis label
-ylabel('coupling factor') % y-axis label
+ylabel('coupling coefficient k') % y-axis label
 
 
 end
