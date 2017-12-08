@@ -13,7 +13,7 @@ dz = 0.7788*wire_radius; %for circular wire, check maxwell paper for other geome
 for zprim = (0:length/(turns-1):length)
 
     for z = (0:length/(turns-1):(length))
-        if z==zprim %singular point handled as instructed in Elektricitetslära by Hallén 1953
+        if z==zprim %singular point handled as instructed in Elektricitetslï¿½ra by Hallï¿½n 1953
             
             L_first = mu0*radius*(log((8*radius)/(radius+(2*wire_radius))) -2)
             L_E = L_E + L_first;

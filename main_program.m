@@ -1,8 +1,8 @@
 mu0 = 4*pi*10^(-7);
-r = [0.1, 0.1]; %radi of one loop 
-l = [0.2, 0.2]; %l�ngd p� solenoid
+r = [0.575, 0.575]; %radi of one loop 
+l = [0.1, 0.1]; %l�ngd p� solenoid
 d = 0.2; %distance in z
-n = [40, 40]; % num of laps
+n = [2, 2]; % num of laps
 z = 0;  
 zprim = 0.2;
 k = 0;
@@ -10,7 +10,7 @@ r_res =0;
 l_res = 0;
 n_res = 0;
 f = 200*10^3; %frequency [Hz]
-wire_radius = 0.001;
+wire_radius = 0.003;
 distance_between_turns = 0.005;
 conductivity = 5.96*10^7;
 delta=1/sqrt(pi*f*conductivity*mu0);
@@ -40,7 +40,7 @@ subplot(2,2,2)
 plot_radii_solenoid(r,l,n,d,wire_radius,delta);
 title(['solenoid with n = ',num2str(n(1)),' m, l = ', num2str(l(1)), ' m, d = ', num2str(d), ' m'])
 %figure()
-
+%}
 
 L_re1 = external_selfinductance_radii(r(1), n(1), distance_between_turns, wire_radius)
 Lr_self1 = internal_selfinductance(r(1),wire_radius,delta, n(1))
@@ -53,6 +53,7 @@ L_r2 = L_re2 + Lr_self2;
 M_r = calculate_mutual_inductance_radii(r(1), distance_between_turns, n, d)
 k = M_r/sqrt((L_r1*L_r2))
 
+%{
 subplot(2,2,3)
 f_rad = plot_radii_layer_coil(r,n,d,distance_between_turns, wire_radius, delta)
 title(['flat coil with n = ', num2str(n(1)), ' , d = ', num2str(d), ' m'])
@@ -69,4 +70,5 @@ fx_radii_turns = differentiate(f_radii_turns, points)
 
 %plot_turns_solenoid_and_layer_coil(r,n,d,distance_between_turns,wire_radius,delta,l);
 %}
-Maximize_k_flat_coil(r(1),n,d,distance_between_turns, wire_radius,delta,0.002,0.004);
+%Maximize_k_flat_coil(r(1),n,d,distance_between_turns, wire_radius,delta,0.002,0.004);
+%optimize_coilz(r(1),n,d,distance_between_turns, wire_radius,delta,0.002,0.004, 10, 200*10^3, l);

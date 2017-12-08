@@ -10,13 +10,13 @@ E = 0; %second order elliptic integral
 
 %For each r' we iterate over all coils abs(r+z) away and changes the distance dependent
 %on the winding
-for r_prime = (initial_radius: distance_between_turns: initial_radius+(turns(1)*distance_between_turns))
-    for r = (initial_radius: distance_between_turns: initial_radius+ (turns(2)*distance_between_turns))
+for r_prime = (initial_radius: distance_between_turns: initial_radius+((turns(1)-1)*distance_between_turns))
+    for r = (initial_radius: distance_between_turns: initial_radius+ ((turns(2)-1)*distance_between_turns))
 
         k_M = (2*sqrt(r_prime*r))/(sqrt((r+r_prime)^2 + (distance_between_coils_z)^2));
         
         [K,E] = ellipke(k_M^2); %solve elliptic integral
-         M_E = M_E - mu0*sqrt(r*r_prime)*((k_M - 2/k_M)*K + 2/k_M*E);
+        M_E = M_E - mu0*sqrt(r*r_prime)*((k_M - 2/k_M)*K + 2/k_M*E);
         
         
     end

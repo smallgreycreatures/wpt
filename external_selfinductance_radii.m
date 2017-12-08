@@ -7,10 +7,10 @@ L_E = 0;
 K = 0;
 E = 0;
 dx = 0.7780*wire_radius;
-for r_prime = (initial_radius:distance_between_turns:initial_radius + turns*distance_between_turns)
+for r_prime = (initial_radius:distance_between_turns:initial_radius + (turns-1)*distance_between_turns)
 
-    for r = (initial_radius + dx:distance_between_turns:initial_radius + dx + turns*distance_between_turns)
-        %if r==r_prime %singular point handled as instructed in Elektricitetslära by Hallén 1953
+    for r = (initial_radius + dx:distance_between_turns:initial_radius + dx + (turns-1)*distance_between_turns)
+        %if r==r_prime %singular point handled as instructed in Elektricitetslï¿½ra by Hallï¿½n 1953
             
          %   L_first = mu0*r*(log((8*r)/(r+(2*wire_radius))) -2);
           %  L_E = L_E + L_first;
