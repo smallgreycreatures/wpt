@@ -13,7 +13,7 @@ mu_0 = 4*pi*10^(-7);
 R_dc = resistivity*l/s;
 
 %Skin effect resistance
-skin_depth = sqrt(1/(pi*f*mu_0*conductivity));
+skin_depth = sqrt(l/(pi*f*mu_0*conductivity));
 R_s = l/(skin_depth*conductivity*(2*a + 2*b -4*skin_depth));
 
 R = R_dc+R_s;

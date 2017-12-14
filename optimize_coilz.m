@@ -14,6 +14,7 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
     max_r = 0;
     max_L = 0;
     max_M = 0;
+    max_R_load = 0;
     i = 1;
     d_for_turn = distance_between_turns+a;
     
@@ -27,7 +28,7 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
         n1
         
         
-        for r1 = 0.05:0.01:0.5
+        for r1 = 0.05:0.01:0.2
             r = [r1, r1];
             radii(i) = r1;
             
@@ -48,7 +49,9 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
                 i_i=i_i+1;
                 R_l1 = calc_resistance_of_planar_coil(n1,a,b,r1, f);
                 R_l2 = calc_resistance_of_planar_coil(n1,a,b,r1, f);
-                eta = coupling_efficiency(L_r1,L_r2,M_r,R_load,f,R_l1,R_l2);
+                %for R_load = 1:1:100
+                R_load = 27.7028;
+                eta = coupling_efficiency2(L_r1,L_r2,M_r,R_load,f,R_l1,R_l2);
                 if eta >= max_eta
                     max_k = k;
                     max_n = n1;
@@ -59,8 +62,9 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
                     max_R_l1 = R_l1;
                     max_R_l2 = R_l2;
                     sol = 0;
+                    max_R_load = R_load;
+                %end
                 end
-            
             end  
         
         end
@@ -76,7 +80,7 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
         n1
         
         
-        for r1 = 0.05:0.01:0.5
+        for r1 = 0.05:0.01:0.2
             r = [r1, r1];
             radii(i) = r1;
             
@@ -97,7 +101,7 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
                 i_i=i_i+1;
                 R_l1 = calc_resistance_of_planar_coil(n1,a,b,r1, f);
                 R_l2 = calc_resistance_of_planar_coil(n1,a,b,r1, f);
-                eta = coupling_efficiency(L1,L2,M,R_load,f,R_l1,R_l2);
+                eta = coupling_efficiency2(L1,L2,M,R_load,f,R_l1,R_l2);
                 if eta >= max_eta
                     max_k = k;
                     max_n = n1;
@@ -129,6 +133,6 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
     max_R_l1
     max_R_l2
     sol
-
+    max_R_load
 end
 

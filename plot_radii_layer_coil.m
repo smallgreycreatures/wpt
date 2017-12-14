@@ -26,8 +26,8 @@ i = 1;
 
     f = fit(radii_for_plot.', values_for_radii_plot.', 'poly3');
     plot(f, radii_for_plot, values_for_radii_plot);
-    xlabel('radii [m]') % x-axis label
-    ylabel('coupling coefficient k') % y-axis label
+    xlabel('radie [m]') % x-axis label
+    ylabel('kopplingsfaktor k') % y-axis label
     regression_function = f;
     
 end

@@ -25,8 +25,8 @@ function [ regression_function ] = plot_turns_layer_coil( r, n, d, distance_betw
 
     f = fit(turns_for_plot.', values_for_turns_plot.', 'poly3');
     plot(f, turns_for_plot, values_for_turns_plot);
-    xlabel('turns n') % x-axis label
-    ylabel('coupling coefficient k') % y-axis label
+    xlabel('varv n') % x-axis label
+    ylabel('kopplingsfaktor k') % y-axis label
     regression_function = f;
 end
 

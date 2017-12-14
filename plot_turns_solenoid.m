@@ -22,8 +22,8 @@ for n1 = 1:1:30
 end
 
 scatter(turns_for_plot, values_for_turns_plot);
-xlabel('turns n') % x-axis label
-ylabel('coupling coefficient k') % y-axis label
+xlabel('varv n') % x-axis label
+ylabel('kopplingsfaktor k') % y-axis label
 
 
 end

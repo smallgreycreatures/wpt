@@ -21,8 +21,8 @@ for r1 = 0.05:0.01:0.5
 end
 
 scatter(radii_for_plot, values_for_radii_plot);
-xlabel('radii [m]') % x-axis label
-ylabel('coupling coefficient k') % y-axis label
+xlabel('radie [m]') % x-axis label
+ylabel('kopplingsfaktor k') % y-axis label
 
 end
 
