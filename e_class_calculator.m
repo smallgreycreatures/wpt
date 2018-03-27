@@ -7,9 +7,12 @@ Qls1 = w*Ls1/Rs1;
 Qls2 = w*Ls2/Rs2;
 n=sqrt(Ls2/Ls1);
 
-R_eq = (k^2*Ls1)/(C2*(R_Load +Rs2))
 
-C = Ls1/((w^2*Ls1^2 +(R_eq+Rs1)^2))
+
+
+%R_eq = (k^2*Ls1)/(C2*(R_Load +Rs2))
+
+%C = Ls1/((w^2*Ls1^2 +(R_eq+Rs1)^2))
 %{
 A = sqrt((alpha*R_eq*R_Load)/((w^2*Ls1^2 + (R_eq + Rs1)^2)*(alpha + (1/Qls2))));
 

@@ -25,13 +25,13 @@ function [ radius, n ] = find_coil_geometry_from_capacitor( inner_radius, n, d, 
     R_l2 = 0;
     max_eta = 0;
     sol = 0;
-    for n1 = 10:1:20
+    for n1 = 1:1:20
         n = [n1,n1];
         i_i = 1;    
         n1
         
         
-        for r1 = 0.1:0.01:0.3
+        for r1 = 0.2:0.01:0.22
             r = [r1, r1];
             radii(i) = r1;
             
@@ -60,7 +60,7 @@ function [ radius, n ] = find_coil_geometry_from_capacitor( inner_radius, n, d, 
                 z2 = j*w*M_r;
                 %z3eq = j*w*(L_r2-M_r) + R_l2 + 1/(j*w*C) + R_load;
                 %z2eq = (z2*z3eq)/(z3eq+z2);
-                L = 1/(w^2*C)
+                L = 1/(w^2*C);
                 
                 %im_part = imag(z2eq);
                 

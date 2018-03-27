@@ -14,6 +14,7 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
     max_r = 0;
     max_L = 0;
     max_M = 0;
+    max_l =0;
     max_R_load = 0;
     i = 1;
     d_for_turn = distance_between_turns+a;
@@ -50,7 +51,7 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
                 R_l1 = calc_resistance_of_planar_coil(n1,a,b,r1, f);
                 R_l2 = calc_resistance_of_planar_coil(n1,a,b,r1, f);
                 %for R_load = 1:1:100
-                R_load = 27.7028;
+                R_load = 26.6;
                 eta = coupling_efficiency2(L_r1,L_r2,M_r,R_load,f,R_l1,R_l2);
                 if eta >= max_eta
                     max_k = k;
@@ -63,6 +64,7 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
                     max_R_l2 = R_l2;
                     sol = 0;
                     max_R_load = R_load;
+                    max_l = l;
                 %end
                 end
             end  
@@ -123,7 +125,7 @@ function [ output_args ] = optimize_coilz( inner_radius, n, d, distance_between_
         max_r
     end
     
-    
+    max_l
     max_k
     max_n
     max_r

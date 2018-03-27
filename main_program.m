@@ -10,11 +10,11 @@ r_res =0;
 l_res = 0;
 n_res = 0;
 f = 200*10^3; %frequency [Hz]
-wire_radius = 0.003;
+wire_radius = 0.001;
 distance_between_turns = 0.002;
 conductivity = 5.96*10^7;
 delta=1/sqrt(pi*f*conductivity*mu0);
-R_load = 27.7028;
+R_load = 26.6;
 R_L = 0.074;
 %{
 tic
@@ -41,7 +41,7 @@ subplot(2,2,2)
 plot_radii_solenoid(r,l,n,d,wire_radius,delta);
 title(['solenoid med n = ',num2str(n(1)),' m, l = ', num2str(l(1)), ' m, d = ', num2str(d), ' m'])
 %figure()
-
+%}
 L_re1 = external_selfinductance_radii(r(1), n(1), distance_between_turns, wire_radius)
 Lr_self1 = internal_selfinductance(r(1),wire_radius,delta, n(1))
 L_r1 = L_re1 + Lr_self1;
@@ -52,7 +52,7 @@ L_r2 = L_re2 + Lr_self2;
 
 M_r = calculate_mutual_inductance_radii(r(1), distance_between_turns, n, d)
 k = M_r/sqrt((L_r1*L_r2))
-
+%{
 %check distance
 
 for d = 0.1:0.03:0.3
@@ -92,3 +92,4 @@ fx_radii_turns = differentiate(f_radii_turns, points)
 %Maximize_k_flat_coil(r(1),n,d,distance_between_turns, wire_radius,delta,0.002,0.004);
 optimize_coilz(r(1),n,d,distance_between_turns, wire_radius,delta,0.002,0.004, 10, 200*10^3, l);
 %find_coil_geometry_from_capacitor(r(1),n,d,distance_between_turns, wire_radius,delta,0.002,0.004, 10, 200*10^3, 6.1303*10^-9)
+%find_coil_geometry_from_capacitor(r(1),n,d,distance_between_turns, wire_radius,delta,0.002,0.004, 10, 200*10^3, 6.8*10^-9)
